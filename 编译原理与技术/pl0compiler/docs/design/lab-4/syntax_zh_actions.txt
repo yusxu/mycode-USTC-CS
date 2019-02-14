@@ -1,0 +1,185 @@
+arrange(空间大小， )
+
+
+
+[0 ]: 程序 --> 程序体 .
+        {
+            程序.code = 
+                
+                
+                程序体.code
+            print 程序.code
+        }
+[1 ]: 程序体 --> 声明 程序体1
+        {
+            程序体.code = 声明.code + 程序体1.code
+        }
+[2 ]: 程序体 --> 语句
+        {
+            程序体.code = 语句.code
+        }
+
+[3 ]: 声明 --> 常量定义
+[4 ]: 声明 --> 变量定义
+[5 ]: 声明 --> 过程
+      
+[6 ]: 常量定义 --> const 常量名表 ;
+[7 ]: 常量名表 --> 定义名 = 常量值 余常量名表
+{
+    compute address
+    table_append()
+}
+[8 ]: 余常量名表 --> , 常量名表
+[9 ]: 余常量名表 --> epsilon
+[10]: 变量定义 --> var 变量名表 ;
+[11]: 变量名表 --> 定义名 余变量名表
+{
+    compute address
+    table_append()
+}
+[12]: 余变量名表 --> , 变量名表
+[13]: 余变量名表 --> epsilon
+[14]: 过程 --> procedure ident 形参后缀 ; 程序体 ;
+{
+    compute procedure address
+    procedure table_append()
+}
+[15]: 条件 --> odd 表达式
+[16]: 条件 --> 表达式 余条件
+[17]: 余条件 --> = 表达式
+[18]: 余条件 --> != 表达式
+[19]: 余条件 --> < 表达式
+[20]: 余条件 --> > 表达式
+[21]: 余条件 --> <= 表达式
+[22]: 余条件 --> >= 表达式
+[23]: 表达式 --> 项 余表达式
+[24]: 项 --> 因子 余项
+[25]: 余表达式 --> + 项 余表达式
+[26]: 余表达式 --> - 项 余表达式
+[27]: 余表达式 --> epsilon
+[28]: 因子 --> 变量常量名
+[29]: 因子 --> number
+[30]: 因子 --> - 因子
+    {
+        因子.code = 因子.code + "PUT 0" + "SUB"
+    }
+[31]: 因子 --> ( 表达式 )
+    {
+        因子.code = 表达式.code;
+    }
+[32]: 余项 --> * 因子 余项
+[33]: 余项 --> / 因子 余项
+[34]: 余项 --> epsilon
+[35]: 语句序列 --> 语句 ; 语句序列
+[36]: 语句 --> 变量常量名 := 表达式
+[37]: 语句 --> 过程调用
+[38]: 语句 --> begin 语句序列 end
+[39]: 语句 --> if 逻辑式 then 语句 余分支
+        {
+            语句.code = 逻辑式.code + "NOT" + "JPC $ + 语句.length + 2" + 语句.code + "JMP $ + 余分支.length + 1" + 余分支.code
+        }
+[40]: 语句 --> while 逻辑式 do 语句
+    {
+        语句.code = 逻辑是.code + "NOT" + "JPC $+语句.length+2" + 语句.code + “JMP $ - 逻辑是length - 语句length -2”
+    }
+[41]: 语句 --> do 语句 while 逻辑式
+    {
+        语句.code = 语句.code + 逻辑是.code + "JPC $- 逻辑是length -语句.length" 
+    }
+[42]: 语句 --> return 表达式
+{
+
+}
+[43]: 定义名 --> ident 长度后缀
+[44]: 长度后缀 --> [ number ] 长度后缀
+[45]: 长度后缀 --> epsilon
+[46]: 引用后缀 --> [ 表达式 ] 引用后缀
+[47]: 引用后缀 --> epsilon
+[48]: 常量值 --> 整数
+[49]: 常量值 --> { 数或向量表 }
+[50]: 整数 --> number
+[51]: 整数 --> - number
+[52]: 数或向量表 --> 向量表
+[53]: 数或向量表 --> 整数表
+[54]: 向量表 --> 向量 余向量表
+[55]: 向量 --> { 整数表 }
+[56]: 余向量表 --> , 向量表
+[57]: 余向量表 --> epsilon
+[58]: 整数表 --> 整数 余整数表
+[59]: 余整数表 --> , 整数表
+[60]: 余整数表 --> epsilon
+[61]: 余分支 --> elif 逻辑式 then 语句 余分支
+        {
+            余分支.code = 逻辑式.code + "NOT" + "JPC $ + 语句.length + 2" + 语句.code + "JMP $ + 余分支.length + 1" + 余分支.code
+        }
+[62]: 余分支 --> else 语句
+        {
+            余分支.code = 语句.code
+        }
+[63]: 余分支 --> epsilon
+[64]: 参数表 --> ident 余参数表
+{
+    compute address
+    table_append()
+}
+[65]: 余参数表 --> , ident 余参数表
+{
+    compute address
+    table_append()
+}
+[66]: 余参数表 --> epsilon
+[67]: 逻辑式 --> 与式 余逻辑式
+    {
+        逻辑式.code = 与式.code + 余逻辑式.code;
+    }
+[68]: 余逻辑式 --> || 与式 余逻辑式
+[69]: 余逻辑式 --> epsilon
+[70]: 与式 --> 条件 余与式
+[71]: 余与式 --> && 条件 余与式
+[72]: 余与式 --> epsilon
+[73]: 条件 --> ! 条件
+[74]: 参数表 --> epsilon
+[75]: 语句 --> print 表达式
+{
+    expression.code +
+    "int 0" +
+    "pop"
+}
+[76]: epsilon
+[77]: epsilon
+[78]: 语句序列 --> epsilon
+[79]: 形参后缀 --> ( 参数表 )
+[80]: 形参后缀 --> epsilon
+[81]: 实参后缀 --> ( 表达式表 )
+{
+    expression.code
+}
+[82]: 实参后缀 --> epsilon
+[83]: 表达式表 --> 表达式 余式表
+{
+    expression.code + exexp.code
+}
+[84]: 表达式表 --> epsilon
+[85]: 余式表 --> , 表达式 余式表
+{
+    return expression.code + exexp.code
+}
+[86]: 余式表 --> epsilon
+[87]: 因子 --> 过程调用
+[88]: 过程调用 --> call ident 实参后缀
+{
+    (mem[0] = sp)
+    address = lookup procedure table(ident)
+    实参值表 = 实参后缀（）
+    /*  从运算棧pop出，在计算参数表达式时，每一个参数值依次存在棧顶，pop出即为反向
+    */
+    for i 实参值表.length to 1
+        push 实参值 into mem stack
+    push $ + 1  // return address
+    jmp address
+
+    // after return 
+    for i = 1 to 实参值表.length
+        pop   // 参数出内存，可简单通过修改mem[0]实现
+}
+[89]: 变量常量名 --> ident 引用后缀

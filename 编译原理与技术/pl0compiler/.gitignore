@@ -1,0 +1,5 @@
+build/*
+bin/
+obj/
+pl0compiler.*
+temp/

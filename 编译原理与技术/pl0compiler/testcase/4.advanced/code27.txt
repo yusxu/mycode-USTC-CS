@@ -1,0 +1,19 @@
+var i;
+
+procedure p;
+var j;
+procedure q;
+const k = 3;
+begin
+  j := k * i;
+end;
+begin
+  call q;
+  i := i * j;
+end;
+
+begin
+  i := 2;
+  call p;
+  print i;
+end.

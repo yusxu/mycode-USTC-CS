@@ -1,0 +1,43 @@
+var x[3][3],i,j,n,a;
+
+procedure f;
+var i,sum,v[n];
+begin
+  i := 0;
+  while i < n do
+  begin
+    v[i] := x[n-n/3*3][n/3];
+    i := i + 1;
+  end;
+  sum := 0;
+  while i >= 1 do
+  begin
+    sum := sum + v[i-1];
+    x[n/3][n/3] := sum - v[i/2];
+    i := i - 1;
+  end;
+  a := a + sum/n;
+end;
+
+begin
+  a := 1;
+  i := 0;
+  while i < 3 do
+  begin
+    j := 0;
+    while j < 3 do
+    begin
+      x[i][j] := i*3+j+1;
+      j := j + 1;
+    end;
+    i := i + 1;
+  end;
+  i := 1;
+  while i < 10 do
+  begin
+    n := i;
+    call f;
+    i := i + 1;
+  end;
+  print a;
+end.

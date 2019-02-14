@@ -1,0 +1,24 @@
+[1]S -> L
+[2]L -> L or A
+[3]L -> A
+[4]A -> A and C
+[5]A -> C
+[6]C -> C < E
+[7]C -> E
+[8]E -> E +- T
+[9]E -> T
+[10]T -> T */ F
+[11]T -> F
+[12]F -> -/not/odd F
+[13]F -> id/num
+[14]F -> ( L )
+
+
+follow
+L: dol or )
+A: dol or and )
+C: dol or and lop )
+E: dol or and lop add )
+T: dol or and lop add mult )
+F: dol or and lop add mult )
+
