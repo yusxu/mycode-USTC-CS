@@ -1,30 +1,64 @@
 # mycode-USTC-CS
-存放本科期间做的较好的课程实验和课外做的一部分代码，之后会上传实验报告
+存放本科期间做的部分课程实验和课外做的一部分代码，之后会上传实验报告
+
+
 
 ## 大二上学期
 ### 模拟与数字电路
 #### Chrome小恐龙游戏
 使用Verilog在FPGA上仿照Chrome浏览器中的小恐龙游戏实现，其中游戏画面通过HDMI连接至显示器上显示。
 
+
+
 ## 大二下学期
 ### 计算机组成原理与设计
 #### MIPS CPU
 使用Verilog在FPGA上实现基于MIPS指令集的CPU，实现46条指令、流水线、trap指令、断点调试。
 
+
+
 ### 操作系统原理与设计（H）
+
+#### lab1
+
+调研并调试Linux开机启动过程
+
+#### lab2
+
+构建出一个精简的Linux操作系统，并在其上运行一个shell进程，接受用户控制。
+
+#### lab3
+
+编写一个基于内存的文件系统
+
+#### lab4
+
+了解meltdown漏洞，并攻击该漏洞
+
 #### 眼动追踪
 使用最基础的电脑自带的摄像头实现眼动追踪，最终效果不理想。
+
+
 
 ## 大三上学期
 ### 编译原理与技术
 #### PL0编译器
 
+实现PL0编译器，拿到156/100的最高分
+
+
+
 ### Web信息处理与应用
 #### DBworld搜索引擎
 
+实现DBworld搜索引擎
+
 #### 数据挖掘
-logistic regression、KNN
-社区发现 spectral cluster、modularity cluster
+实现算法：logistic regression、KNN
+
+社区发现：spectral cluster、modularity cluster
+
+
 
 ### 算法基础
 #### 排序
@@ -38,6 +72,8 @@ logistic regression、KNN
 
 #### 字符串匹配
 BMH、KMP、RabinKarp
+
+
 
 ## 之后会一直不定期整理上传
 ## 抽空给每个实验都写一个README
