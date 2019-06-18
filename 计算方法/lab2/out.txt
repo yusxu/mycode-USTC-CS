@@ -1,0 +1,17 @@
+N = 4
+first
+error = 6.475332068311e-02
+second
+error = 5.437602650073e-02
+
+N = 8
+first
+error = 5.156056628633e-02
+second
+error = 1.426092606546e-02
+
+N = 16
+first
+error = 1.071904407255e-01
+second
+error = 8.367272096924e-04
